@@ -1,0 +1,102 @@
+{
+	"name": "tcattd/site-killtro.com",
+	"description": "killtro.com via composer",
+	"license": "MIT",
+	"authors"     : [
+		{
+			"name"    : "Esteban Cuevas",
+			"email"   : "esteban@attitude.cl",
+			"homepage": "http://www.attitude.cl"
+		}
+	],
+	"type" : "project",
+	"config" : {
+		"vendor-dir": "vendor"
+	},
+	"repositories":[
+		{
+			"type":"composer",
+			"url":"http://wpackagist.org"
+		},
+		{
+			"type": "composer",
+			"url": "http://languages.koodimonni.fi"
+		}
+	],
+	"require": {
+		"composer/installers" : "~1.0",
+		"johnpbloch/wordpress": "*",
+		"koodimonni-language/es_ES": "*",
+		"tcattd/wp-mainwp-child-hidemenu": "*",
+		"wpackagist-plugin/akismet": "*",
+		"wpackagist-plugin/backwpup": "*",
+		"wpackagist-plugin/force-domain-redirect": "*",
+		"wpackagist-plugin/mainwp-child": "*",
+		"wpackagist-plugin/nospamnx": "*",
+		"wpackagist-plugin/pingback-killer": "*",
+		"wpackagist-plugin/simple-301-redirects": "*",
+		"wpackagist-plugin/simple-login-lockdown": "*",
+		"wpackagist-plugin/catch-ids": "*",
+		"wpackagist-plugin/cloudflare": "*",
+		"wpackagist-plugin/regenerate-thumbnails": "*",
+		"wpackagist-plugin/wp-optimize": "*",
+		"wpackagist-theme/twentyfifteen": "*"
+	},
+	"extra": {
+		"wordpress-install-dir": "wp-core/",
+		"installer-paths" : {
+			"public/wp-content/plugins/{$name}/": ["type:wordpress-plugin"],
+			"public/wp-content/mu-plugins/{$name}/": ["type:wordpress-muplugin"],
+			"public/wp-content/themes/{$name}/": ["type:wordpress-theme"]
+		},
+		"dropin-paths": {
+			"public/wp-content/languages/": ["vendor:koodimonni-language"],
+			"public/wp-content/languages/plugins/": ["vendor:koodimonni-plugin-language"],
+			"public/wp-content/languages/themes/": ["vendor:koodimonni-theme-language"]
+		}
+	},
+	"scripts": {
+		"post-install-cmd": [
+			"rm -f public/license.txt",
+			"rm -f public/readme.html",
+			"rm -f public/wp-config-sample.php",
+			"rm -f public/composer.json",
+			"rm -f public/wp-content/plugins/hello.php",
+			"rm -f public/wp-content/plugins/mobile-smart/includes/timthumb.php",
+			"rm -f wp-core/license.txt",
+			"rm -f wp-core/readme.html",
+			"rm -f wp-core/wp-config-sample.php",
+			"rm -f wp-core/composer.json",
+			"rm -rf wp-core/wp-content/",
+			"cd public/ && ln -sf ../wp-core/* ./",
+			"echo 'www.attitude.cl' > public/attitude.txt"
+		],
+		"post-update-cmd": [
+			"rm -f public/license.txt",
+			"rm -f public/readme.html",
+			"rm -f public/wp-config-sample.php",
+			"rm -f public/composer.json",
+			"rm -f public/wp-content/plugins/hello.php",
+			"rm -f public/wp-content/plugins/mobile-smart/includes/timthumb.php",
+			"rm -f wp-core/license.txt",
+			"rm -f wp-core/readme.html",
+			"rm -f wp-core/wp-config-sample.php",
+			"rm -f wp-core/composer.json",
+			"rm -rf wp-core/wp-content/",
+			"cd public/ && ln -sf ../wp-core/* ./",
+			"echo 'www.attitude.cl' > public/attitude.txt"
+		],
+		"wpcore": [
+			"mkdir wpcoretemp/",
+			"curl -o wpcoretemp/wp.zip https://wordpress.org/latest.zip",
+			"unzip wpcoretemp/wp.zip -d wpcoretemp/",
+			"rm -f wpcoretemp/wp.zip",
+			"rm -fr wpcoretemp/wordpress/wp-content/",
+			"rm -f wpcoretemp/wordpress/license.txt",
+			"rm -f wpcoretemp/wordpress/readme.html",
+			"rm -f wpcoretemp/wordpress/wp-config-sample.php",
+			"rsync -rqu --force wpcoretemp/wordpress/* ./wp-core/",
+			"rm -fr wpcoretemp/"
+		]
+	}
+}

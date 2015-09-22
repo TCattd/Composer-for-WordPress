@@ -1,0 +1,56 @@
+{
+	"name": "tcattd/site-attitude.cl",
+	"description": "attitude.cl via composer",
+	"license": "MIT",
+	"authors"     : [
+		{
+			"name"    : "Esteban Cuevas",
+			"email"   : "esteban@attitude.cl",
+			"homepage": "http://www.attitude.cl"
+		}
+	],
+	"type" : "project",
+	"config" : {
+		"vendor-dir": "wp-content/vendor"
+	},
+	"repositories":[
+		{
+			"type":"composer",
+			"url":"http://wpackagist.org"
+		},
+		{
+			"type": "composer",
+			"url": "http://languages.koodimonni.fi"
+		}
+	],
+	"require": {
+		"koodimonni-language/es_ES": "*",
+		"tcattd/wp-mainwp-child-hidemenu": "*",
+		"wpackagist-plugin/backwpup": "*",
+		"wpackagist-plugin/force-domain-redirect": "*",
+		"wpackagist-plugin/mainwp-child": "*",
+		"wpackagist-plugin/nospamnx": "*",
+		"wpackagist-plugin/pingback-killer": "*",
+		"wpackagist-plugin/simple-301-redirects": "*",
+		"wpackagist-plugin/simple-login-lockdown": "*",
+		"wpackagist-plugin/catch-ids": "*",
+		"wpackagist-plugin/cloudflare": "*",
+		"wpackagist-plugin/regenerate-thumbnails": "*",
+		"wpackagist-plugin/wp-optimize": "*",
+		"wpackagist-theme/twentyfifteen": "*"
+	},
+	"scripts": {
+		"wpcore": [
+			"mkdir wpcore/",
+			"curl -o wpcore/wp.zip https://wordpress.org/latest.zip",
+			"unzip wpcore/wp.zip -d wpcore/",
+			"rm -f wpcore/wp.zip",
+			"rm -fr wpcore/wordpress/wp-content/",
+			"rm -f wpcore/wordpress/license.txt",
+			"rm -f wpcore/wordpress/readme.html",
+			"rm -f wpcore/wordpress/wp-config-sample.php",
+			"rsync -rqu --force wpcore/wordpress/* ./",
+			"rm -fr wpcore/"
+		]
+	}
+}
