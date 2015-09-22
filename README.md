@@ -17,5 +17,8 @@ Upload the files to your server as you like.
 
 Recommendation for ftp-access-only hosting: use git and [dandelion](https://github.com/scttnlsn/dandelion).
 
+### Demo
+View the demo at [YouTube](https://www.youtube.com/watch?v=2M8tlyhrGQw).
+
 ### License
 All source code is released under the [MIT license](https://opensource.org/licenses/MIT).
