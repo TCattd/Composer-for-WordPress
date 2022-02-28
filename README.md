@@ -21,7 +21,7 @@ Recommendation for ftp-access-only hosting: use git and [dandelion](https://gith
 <p align="center">
 	<img src="http://i.imgur.com/SN1rHqJ.gif" alt="Video Demo" />
 </p>
-View the demo at [YouTube](https://www.youtube.com/watch?v=2M8tlyhrGQw).
+View the demo at [YouTube](https://www.youtube.com/watch?v=_MNQU4pfZs0)
 
 ### License
 All source code is released under the [MIT license](https://opensource.org/licenses/MIT).
